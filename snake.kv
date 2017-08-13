@@ -1,0 +1,56 @@
+#:kivy 1.9.0
+
+<MenuScreen>:
+    menu: menu_id
+
+    Menu:
+        id: menu_id
+
+<Menu>:
+    snake: snake_id
+    apple: apple_id
+
+    Image:
+        id: snake_id
+        source: "data/snake.png"
+        size: dp(300), dp(200)
+
+    Image:
+        id: apple_id
+        allow_stretch: True
+        source: "data/apple.png"
+        size: dp(250), dp(250)
+        pos: root.size[0] * 3.0 / 4.0 - self.width / 2, root.size[1] * 1.0 / 4.0 - self.height / 2
+
+    Button:
+        background_normal: "data/play.png"
+        background_down: "data/play.png"
+        size: dp(200), dp(100)
+        pos: root.size[0] / 2 - self.width / 2, root.size[1] / 2 - self.height / 2
+        on_press: root.manager.current = 'SnakeGameScreen'
+
+    Label:
+        size: (dp(300), dp(220))
+        font_size: dp(12)
+        text: "Author\nAdam Chyła\nchyla.org\n\nImage credits\nKenney.nl\nopenclipart.org\nothers\n\nMusic credits\nHappy Sounds by Mativve » Cheerful Song\nHappy Sounds by Mativve » Electro open sound\nD. W. O'Boyle » Menu Interface - Confirm"
+
+<SnakeGameScreen>:
+    snake_game: snake_game_id
+
+    SnakeGame:
+        id: snake_game_id
+
+<SnakeGame>:
+    game_over: game_over_id
+
+    Label:
+        font_size: dp(30)
+        pos: dp(50), 0
+        text: "Score: " + str(root.score)
+
+    Label:
+        id: game_over_id
+        font_size: dp(30)
+        pos: root.size[0] / 2 - self.width / 2, root.size[1] / 2 - self.height / 2
+        opacity: 0
+        text: "Game over!"

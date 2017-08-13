@@ -1,0 +1,4 @@
+title=Snake
+author=ac
+orientation=landscape
+
